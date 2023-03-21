@@ -2,6 +2,9 @@ const { db } = require("../models");
 
 async function Product(req,res){
     db.all('SELECT * FROM products', (err, products) => {
+        if(err){
+            res.send(JSON.stringify({response:'Something went wrong'}));
+        }
         res.send(products)
 })
 }
@@ -31,7 +34,8 @@ async function createProduct(req,res){
         
         title,
         img,
-        price,id
+        price,
+        id
         
      ],
      (err)=>{

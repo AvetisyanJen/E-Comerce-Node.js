@@ -22,11 +22,8 @@ require('dotenv').config();
     async function login(req,res){
         const username = req.body.username;
         const password = req.body.password;
-        // const hashed_password = CryptoJS.SHA256(password).toString();
-    
         const sql = 'SELECT * FROM users WHERE username=?';
         db.get(sql,[username],await function(err,row){
-            // if(username === row.username && hashed_password === row.password){
                 if(username === row.username && bcrypt.compare(password, row.password)){
             console.log(row.password);
                 const token = generateAccessToken(username,row.id,row.rol);
