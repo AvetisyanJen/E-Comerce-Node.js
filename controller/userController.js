@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const {db} = require("../models");
 const {generateAccessToken}=require("../jwt/generate")
-require('dotenv').config();
+
 
    async function register(req, res) {
         const { username, password} = req.body

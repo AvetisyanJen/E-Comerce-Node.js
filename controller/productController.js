@@ -31,7 +31,6 @@ async function createProduct(req,res){
     // const {id}=req.params
      db.run('UPDATE products SET title=?, img=?, price=? WHERE id=?', 
      [  
-        
         title,
         img,
         price,
